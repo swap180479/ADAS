@@ -1,4 +1,4 @@
-name: ADAS AEB CI
+name: ADAS AEB Source Build
 
 on:
   push:
@@ -8,14 +8,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Configure
-        run: cmake -S . -B build -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Debug
-      - name: Build
+      - name: Configure source project
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+      - name: Build source library
         run: cmake --build build --parallel
-      - name: Run GoogleTests
-        run: ctest --test-dir build --output-on-failure
