@@ -1,0 +1,10 @@
+build/
+.vs/
+.idea/
+*.o
+*.obj
+*.exe
+*.gcda
+*.gcno
+*.gcov
+coverage/
